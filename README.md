@@ -31,6 +31,6 @@ int main(void)
 }
 ```
 
-Compilation is limited to C23, because the macros use \__VA_OPT__ for detecting the end of variadic arguments and for allowing zero arguments to WRITELN and PRINTLN (to easily print a newline).
+Compilation is limited to C23, because the macros use \_\_VA_OPT__ for detecting the end of variadic arguments and for allowing zero arguments to WRITELN and PRINTLN (to easily print a newline).
 
 Additionally, only GNU-C compliant compilers are supported for now as the macros use GCC pragmas to silence formatting warnings. This is not a security risk; it is only necessary because _Generic evaluates every branch during compilation.
