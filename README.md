@@ -1,5 +1,5 @@
 # print.h
-Convenient print macros with user extensibility (C23, GNU-C)
+Convenient print macros with user extensibility (C23)
 
 # Usage
 print.h exposes four macros to the user (WRITE, WRITELN, PRINT, PRINTLN), to write to a stream with or without newline, or to default to stdout.
@@ -32,5 +32,3 @@ int main(void)
 ```
 
 Compilation is limited to C23, because the macros use \_\_VA_OPT__ for detecting the end of variadic arguments and for allowing zero arguments to WRITELN and PRINTLN (to easily print a newline).
-
-Additionally, only GNU-C compliant compilers are supported for now as the macros use GCC pragmas to silence formatting warnings. This is not a security risk; it is only necessary because _Generic evaluates every branch during compilation.
