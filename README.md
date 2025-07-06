@@ -27,6 +27,6 @@ int main(void)
 	float   s = 0.5f;
 	Vector2 w = {s + v.x, s + v.y};
 	// but custom types need callbacks (enclosed) and a tuple as the last argument
-	PRINTLN(s, " + ", (Vector2), " = ", (Vector2), (v, w));
+	PRINTLN((Vector2), " + ", s, " = ", (Vector2), (v, w));
 }
 ```
