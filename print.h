@@ -82,11 +82,11 @@ PRINT_IF_(PRINT_NO_ARGS_(__VA_ARGS__))() ( \
 #define PRINT_EVAL2_(...)      PRINT_EVAL3_(PRINT_EVAL3_(PRINT_EVAL3_(__VA_ARGS__)))
 #define PRINT_EVAL3_(...)      PRINT_EVAL4_(PRINT_EVAL4_(PRINT_EVAL4_(__VA_ARGS__)))
 #define PRINT_EVAL4_(...)      PRINT_EVAL5_(PRINT_EVAL5_(PRINT_EVAL5_(__VA_ARGS__)))
-#ifdef _MSC_VER_
-	#define PRINT_EVAL5_(...)  PRINT_EVAL6_(PRINT_EVAL6_(__VA_ARGS__))
-	#define PRINT_EVAL6_(...)  __VA_ARGS__
+#ifdef _MSC_VER
+	#define PRINT_EVAL5_(...) PRINT_EVAL6_(PRINT_EVAL6_(__VA_ARGS__))
+	#define PRINT_EVAL6_(...) __VA_ARGS__
 #else
-	#define PRINT_EVAL5_(...)  __VA_ARGS__
+	#define PRINT_EVAL5_(...) __VA_ARGS__
 #endif
 #define PRINT_HEAD_(X, ...)    X
 #define PRINT_IF_(...)         PRINT_CONCAT_ ( \
