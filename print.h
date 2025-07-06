@@ -103,7 +103,7 @@ PRINT_IF_(PRINT_NO_ARGS_(__VA_ARGS__))() ( \
 	PRINT_DEFER_ PRINT_EMPTY_()(PRINT_LAST1_)()(__VA_ARGS__) \
 )
 #define PRINT_LAST1_()         PRINT_LAST0_
-#define PRINT_NO_ARGS_(...) PRINT_IS_PACK_ ( \
+#define PRINT_NO_ARGS_(...)    PRINT_IS_PACK_ ( \
 	PRINT_IF_(PRINT_IS_PACK_(PRINT_HEAD_(__VA_ARGS__)))(~)( \
 		PRINT_HEAD_(__VA_ARGS__) \
 	)())
