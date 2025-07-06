@@ -1,9 +1,13 @@
 #ifndef PRINT_H_
 #define PRINT_H_
 
-#include <float.h>
-#include <inttypes.h>
-#include <stdint.h>
+#if defined(__STDC__) && defined(__STDC_VERSION__)
+#if 201112L <= __STDC_VERSION__
+	#include <float.h>
+	#include <inttypes.h>
+	#include <stdint.h>
+#endif
+#endif
 #include <stdio.h>
 
 #define WRITE(Stream, ...) do { \
