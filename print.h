@@ -36,22 +36,22 @@
 	Args \
 ), Peek, __VA_ARGS__))
 #define PRINT_WRITE1_(S, X) _Generic((X), \
-	int8_t      : fprintf(S, "%"  PRIi8,                     (X)), \
-	uint8_t     : fprintf(S, "%"  PRIu8,                     (X)), \
-	int16_t     : fprintf(S, "%"  PRIi16,                    (X)), \
-	uint16_t    : fprintf(S, "%"  PRIu16,                    (X)), \
-	int32_t     : fprintf(S, "%"  PRIi32,                    (X)), \
-	uint32_t    : fprintf(S, "%"  PRIu32,                    (X)), \
-	int64_t     : fprintf(S, "%"  PRIi64,                    (X)), \
-	uint64_t    : fprintf(S, "%"  PRIu64,                    (X)), \
-	float       : fprintf(S, "%." PRINT_STR_(FLT_DIG)  "g",  (X)), \
-	double      : fprintf(S, "%." PRINT_STR_(DBL_DIG)  "lg", (X)), \
-	long double : fprintf(S, "%." PRINT_STR_(LDBL_DIG) "Lg", (X)), \
-	_Bool       : fprintf(S,              (X) ? "true" : "false"), \
-	char        : fprintf(S, "%c",                           (X)), \
-	char       *: fprintf(S, "%s",                           (X)), \
-	char const *: fprintf(S, "%s",                           (X)), \
-	default     : fprintf(S, "%p",                           (X)));
+	int8_t      : fprintf(S, "%"  PRIi8,                     _Generic((X), int8_t      : X, default : (int8_t)      0)), \
+	uint8_t     : fprintf(S, "%"  PRIu8,                     _Generic((X), uint8_t     : X, default : (uint8_t)     0)), \
+	int16_t     : fprintf(S, "%"  PRIi16,                    _Generic((X), int16_t     : X, default : (int16_t)     0)), \
+	uint16_t    : fprintf(S, "%"  PRIu16,                    _Generic((X), uint16_t    : X, default : (uint16_t)    0)), \
+	int32_t     : fprintf(S, "%"  PRIi32,                    _Generic((X), int32_t     : X, default : (int32_t)     0)), \
+	uint32_t    : fprintf(S, "%"  PRIu32,                    _Generic((X), uint32_t    : X, default : (uint32_t)    0)), \
+	int64_t     : fprintf(S, "%"  PRIi64,                    _Generic((X), int64_t     : X, default : (int64_t)     0)), \
+	uint64_t    : fprintf(S, "%"  PRIu64,                    _Generic((X), uint64_t    : X, default : (uint64_t)    0)), \
+	float       : fprintf(S, "%." PRINT_STR_(FLT_DIG)  "g",  _Generic((X), float       : X, default : (float)       0)), \
+	double      : fprintf(S, "%." PRINT_STR_(DBL_DIG)  "lg", _Generic((X), double      : X, default : (double)      0)), \
+	long double : fprintf(S, "%." PRINT_STR_(LDBL_DIG) "Lg", _Generic((X), long double : X, default : (long double) 0)), \
+	_Bool       : fputs  (                                                                      (X) ? "true" : "false", S), \
+	char        : fputc  (                                   _Generic((X), char        : X, default : (char)        0), S), \
+	char       *: fputs  (                                   _Generic((X), char       *: X, default : (char       *)0), S), \
+	char const *: fputs  (                                   _Generic((X), char const *: X, default : (char const *)0), S), \
+	default     : fprintf(S, "%p",                                                                (void *)(uintptr_t) (X)));
 #define PRINT_WRITE2_() PRINT_WRITE0_
 #define PRINT_WRITE3_(X, ...) \
 	PRINT_WRITE1_(PRINT_WRITE_STREAM_, X) \
