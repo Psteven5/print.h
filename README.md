@@ -7,7 +7,6 @@ print.h exposes four macros to the user (WRITE, WRITELN, PRINT, PRINTLN), to wri
 The macros are overloaded with _Generic (C11) to print default types, but they are extendable through providing your own functions. If C11 is not used, this extendability is preserved, but the macros will not be overloaded for default types, only strings.
 
 Here is a simple example:
-
 ```c
 #include "print.h"
 
@@ -30,6 +29,7 @@ int main(void)
 	PRINTLN((Vector2), " + ", s, " = ", (Vector2), (v, w));
 }
 ```
+Output:
 ```
 (1, 2) + 0.5 = (1.5, 2.5)
 ```
