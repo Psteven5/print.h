@@ -17,7 +17,7 @@ typedef struct {
 static inline void writeVector2(FILE *restrict stream, Vector2 v)
 {
 	// writing is overloaded on basic types
-	WRITE(stream, "(", v.x, ", ", v.y, ")");
+	WRITE(stream, "(",v.x,", ",v.y,")");
 }
 
 int main(void)
@@ -26,7 +26,8 @@ int main(void)
 	float   s = 0.5f;
 	Vector2 w = {s + v.x, s + v.y};
 	// but custom types need callbacks (enclosed) and a tuple as the last argument
-	PRINTLN((Vector2), " + ", s, " = ", (Vector2), (v, w));
+	PRINTLN((Vector2)," + ",s," = ",(Vector2),
+		(v, w));
 }
 ```
 Output:
