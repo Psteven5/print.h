@@ -30,3 +30,6 @@ int main(void)
 	PRINTLN((Vector2), " + ", s, " = ", (Vector2), (v, w));
 }
 ```
+```
+(1, 2) + 0.5 = (1.5, 2.5)
+```
