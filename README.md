@@ -1,10 +1,10 @@
 # print.h
-Convenient print macros with user extensibility (C23)
+Convenient print macros with user extensibility
 
 # Usage
 print.h exposes four macros to the user (WRITE, WRITELN, PRINT, PRINTLN), to write to a stream with or without newline, or to default to stdout.
 
-The macros are overloaded with _Generic (C11) to print default types, but they are extendable through providing your own functions.
+The macros are overloaded with _Generic (C11) to print default types, but they are extendable through providing your own functions. If C11 is not used, this extendability is preserved, but the macros will not be overloaded for default types, only strings.
 
 Here is a simple example:
 
@@ -30,5 +30,3 @@ int main(void)
 	PRINTLN(s, " + ", (Vector2), " = ", (Vector2), (v, w));
 }
 ```
-
-Compilation is limited to C23, because the macros use \_\_VA_OPT__ for detecting the end of variadic arguments and for allowing zero arguments to WRITELN and PRINTLN (to easily print a newline).
